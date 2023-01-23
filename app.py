@@ -34,11 +34,6 @@ def add_student():
         students = []
 
     new_student = request.get_json()
-
-    # new_student = {
-    #     'sname' : request.form.get('sname'),
-    #     'email' : request.form.get('email')
-    #     }
     print(new_student)
     # validate the inputs
     if not new_student['sname'] or not new_student['email']:
@@ -88,28 +83,7 @@ def add_score():
         return jsonify({'status': 'error', 'message': 'student not found'}), 400
     return jsonify({'status': 'success'})
 
-# @app.route('/scores', methods=['POST'])
-# def add_score():
-#     with open('students.json', 'r') as f:
-#         students = json.load(f)
-#     try:
-#         with open('scores.json', 'r') as f:
-#             scores = json.load(f)
-#     except FileNotFoundError:
-#         scores = []
-#     student_name = request.get_json('student_name')['student_name']
-#     # student_name = request.form['student_name']
-#     student_exists = False
-#     for s in students:
-#         if s['sname'] == student_name:
-#             student_exists = True
-#             break
-#     if student_exists:
-#         new_score = request.get_json()
-#         scores.append(new_score)
-#         with open('scores.json', 'w') as f:
-#             json.dump(scores, f)
-#     return jsonify(scores)
+
 
 if __name__ == '__main__':
     with app.app_context():
